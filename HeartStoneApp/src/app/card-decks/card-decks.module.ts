@@ -7,13 +7,19 @@ import { IonicModule } from '@ionic/angular';
 import { CardDecksPageRoutingModule } from './card-decks-routing.module';
 
 import { CardDecksPage } from './card-decks.page';
+import { ModalInfoPage } from '../modal-info/modal-info.page';
+import { ModalInfoPageModule } from '../modal-info/modal-info.module';
 
 @NgModule({
+  entryComponents: [
+    ModalInfoPage
+  ], 
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    CardDecksPageRoutingModule
+    CardDecksPageRoutingModule,
+    ModalInfoPageModule
   ],
   declarations: [CardDecksPage]
 })
