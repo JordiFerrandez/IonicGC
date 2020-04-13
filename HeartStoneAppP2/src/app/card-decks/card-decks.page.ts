@@ -14,7 +14,7 @@ export class CardDecksPage implements OnInit {
 
   cardDecks: CardDeck [];
 
-  selectedCDs: string[] = [];
+  selectedCDs: CardDeck[] = [];
 
   constructor() { }
 
@@ -22,8 +22,9 @@ export class CardDecksPage implements OnInit {
     this.getData();
   }
 
-  select(name: string){
-    console.log(name);
+  // COMO ESTABA SIN LA OPCIONAL
+
+  /*select(name: string){
     var esta = this.selectedCDs.indexOf(name);
 
     if(esta === -1){
@@ -32,6 +33,29 @@ export class CardDecksPage implements OnInit {
 
     else{
       this.selectedCDs.splice(esta, 1);
+    }
+  }*/
+
+  select(name: string){
+    var esta = false;
+
+    if(this.selectedCDs.length != 0){
+      for(var x in this.selectedCDs){
+        if(this.selectedCDs[x].name == name){
+          esta = true;
+          var aux = this.selectedCDs[x];
+          this.selectedCDs.splice(this.selectedCDs.indexOf(aux),1);
+          break;
+        }
+      }
+    }
+
+    if(esta == false){
+      for(var i in this.cardDecks){
+        if(this.cardDecks[i].name == name){
+          this.selectedCDs.push(this.cardDecks[i]);
+        }
+      }
     }
   }
 

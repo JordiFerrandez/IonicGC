@@ -10,8 +10,9 @@
     <app-card-deck *ngFor="let cardDeck of cardDecks" [myCardDeck]="cardDeck" (clicked)="select($event)" ></app-card-deck>
   </ion-list>
 
-  <p>Selected Card decks:
-    <span *ngFor="let name of selectedCDs">{{name}}&nbsp;</span>
-  </p>
+  <p>Selected Card decks:</p>
+    <ul *ngFor="let obj of selectedCDs">
+      <li>{{obj.name}}: {{obj.cards}}</li>
+    </ul>
 </ion-content>
 
