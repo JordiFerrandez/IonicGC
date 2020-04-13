@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { CardDeckComponent } from './../card-deck/card-deck.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ModalInfoPage } from '../modal-info/modal-info.page';
 import { CardDeck } from '../models/card-deck';
@@ -10,7 +11,9 @@ import { CardDeck } from '../models/card-deck';
 })
 export class CardDecksPage implements OnInit {
 
-  readonly mockupFile: string= "./assets/data/carddecks.json";
+  readonly mockupFile: string = "./assets/data/carddecks.json";
+
+  @ViewChild('hijo', ({static: true})) componenteHijo: CardDeckComponent;
 
   cardDecks: CardDeck [];
 
@@ -19,6 +22,7 @@ export class CardDecksPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log(this.componenteHijo);
     this.getData();
   }
 
