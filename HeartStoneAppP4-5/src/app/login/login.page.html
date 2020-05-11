@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Inicio de sesión</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div *ngIf="hideHTML">
+  <form [formGroup]="elForm">
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label position="floating">
+        <ion-icon name="mail" item-start></ion-icon>
+        Tu correo
+      </ion-label>
+      <ion-input color="secondary" type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.email">
+      <p ion-text class="text08" *ngIf="email.touched && email.hasError(error.type)">
+        <ion-text color="danger">{{error.message}}</ion-text>
+      </p>
+    </div>
+
+    <ion-item no-padding class="animated fadeInUp">
+      <ion-label position="floating">
+        <ion-icon name="lock-closed" item-start></ion-icon>
+        Tu contraseña
+      </ion-label>
+      <ion-input color="secondary" type="password" formControlName="clave"></ion-input>
+    </ion-item>
+    <div *ngFor="let error of errorMessages.clave">
+      <p ion-text sclass="text08" *ngIf="clave.touched && clave.hasError(error.type)">
+        <ion-text color="danger">{{error.message}}</ion-text>
+      </p>
+    </div>
+
+    <div>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark"
+      (click)="doLogin()" [disabled]="!elForm.valid" tappable>
+      <ion-icon name="log-in"></ion-icon>
+      Entrar
+      </ion-button>
+    </div>
+  </form>
+  </div>
+
+  <div *ngIf="!hideHTML"> 
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Login enviado!</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p><strong>Email:</strong> {{email.value}}</p>
+        <p><strong>Clave:</strong> {{clave.value}}</p>
+      </ion-card-content>
+    </ion-card>
+    <div>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="primary"
+      (click)="acceder()" tappable>Siguiente</ion-button>
+    </div>
+  </div>
+</ion-content>
